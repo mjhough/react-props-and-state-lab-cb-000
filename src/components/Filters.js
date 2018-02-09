@@ -1,9 +1,6 @@
 import React from 'react';
 
 class Filters extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   handleOnChangeType = (ev) => {
     this.props.onChangeType(ev.target.value);
