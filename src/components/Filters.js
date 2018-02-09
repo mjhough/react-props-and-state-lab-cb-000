@@ -1,8 +1,12 @@
 import React from 'react';
 
 class Filters extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+  }
+
+  handleOnChangeType = (ev) => {
+    this.props.onChangeType(ev.target.value);
   }
 
   render() {
@@ -10,7 +14,7 @@ class Filters extends React.Component {
       <div className="ui form">
         <h3>Animal type</h3>
         <div className="field">
-          <select name="type" id="type">
+          <select filters={this.props.filters} value={this.props.filters.type} onChange={this.handleOnChangeType} name="type" id="type">
             <option value="all">All</option>
             <option value="cat">Cats</option>
             <option value="dog">Dogs</option>
@@ -19,7 +23,7 @@ class Filters extends React.Component {
         </div>
 
         <div className="field">
-          <button className="ui secondary button">Find pets</button>
+          <button onClick={this.props.onFindPetsClick} className="ui secondary button">Find pets</button>
         </div>
       </div>
     );
